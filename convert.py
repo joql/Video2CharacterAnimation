@@ -62,7 +62,7 @@ def create_ascii_picture(pixels, symbols, dest_name, x_size, y_size):
     for j in range(0, y_size, interval_pixel):
         for i in range(0, x_size, interval_pixel):
             t.text( (x, y),
-                    symbols[int(pixels[j*x_size + i]/256 * len(symbols))],
+                    symbols[int(pixels[j*x_size + i] / float(256) * len(symbols))],
                     font=fnt,
                     fill=0
                     )
@@ -115,8 +115,8 @@ def start_convert(src_file):
     if os.path.exists('temp_thum'):
         shutil.rmtree('temp_thum')
 
-    #if os.path.exists('temp_ascii'):
-        #shutil.rmtree('temp_ascii')
+    if os.path.exists('temp_ascii'):
+        shutil.rmtree('temp_ascii')
 
     if os.path.exists('temp.mp3'):
         os.remove('temp.mp3')
